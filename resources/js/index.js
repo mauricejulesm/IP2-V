@@ -7,5 +7,5 @@ navBarToggle.addEventListener("click", () => {
 
 let docs = document.getElementById('docs');
 docs.addEventListener("click", () => {
-  window.open('resources/doc/Integrated Project 2 Specification August 2018 V1.0.pdf', '_blank');
+  window.open('resources/doc/Integrated Project 2 Specification.pdf', '_blank');
 });
