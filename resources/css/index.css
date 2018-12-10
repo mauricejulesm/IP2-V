@@ -67,7 +67,6 @@ body {
     height: 70px;
     align-items: center;
   }
-
   .main-nav {
     display: flex;
     margin-right: 30px;
@@ -101,4 +100,15 @@ body {
   height: 100% !important;
   object-fit: fill !important;
   width: 100% !important;
+}
+
+/**** Authors Page *****/
+#authors img{
+  object-fit: fill !important;
+  width: 25% ;
+}
+
+#authors{
+  width: 60%;
+  text-align: center;
 }
