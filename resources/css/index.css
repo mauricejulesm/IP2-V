@@ -29,7 +29,7 @@ body {
 }
 
 .nav-links,
-.logo {
+.logo{
   text-decoration: none;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -44,6 +44,9 @@ body {
   font-size: 22px;
   margin-top: 10px;
   margin-left: 20px;
+}
+.logo:hover{
+  text-decoration: none;
 }
 
 .navbar-toggle {
@@ -102,3 +105,6 @@ body {
   object-fit: fill !important;
   width: 100% !important;
 }
+
+
+
