@@ -59,7 +59,7 @@ body {
   display: block;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -67,6 +67,7 @@ body {
     height: 70px;
     align-items: center;
   }
+
   .main-nav {
     display: flex;
     margin-right: 30px;
@@ -100,6 +101,16 @@ body {
   height: 100% !important;
   object-fit: fill !important;
   width: 100% !important;
+}
+
+
+#map {
+  height: 650px;
+  width: 85%;
+}
+
+#forecast {
+  height: 150px;
 }
 
 /**** Authors Page *****/

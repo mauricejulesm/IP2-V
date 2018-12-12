@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="./resources/css/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+          integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+          crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <title>Geo-Data | Earthquake</title>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <span class="navbar-toggle" id="js-navbar-toggle">
+      <i class="fas fa-bars"></i>
+    </span>
+    <a href="./index.html" class="logo">Geo-Data</a>
+    <ul class="main-nav" id="js-menu">
+      <li><a href="./index.html" class="nav-links">Home</a></li>
+      <li><a href="./about.html" class="nav-links">GeoJson</a></li>
+      <li><a href="./authors.html" class="nav-links">Authors</a></li>
+      <li><a href="./quake.html" class="nav-links">Earthquake</a></li>
+      <li><a href="./weather.html" class="nav-links">Weather</a></li>
+      <li><a href="#" class="nav-links">Undecided</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <div class="row">
+    <section class="col-3">
+      <h3 class="display-4">Feeds</h3>
+      <div id="feedSelector"></div>
+    </section>
+    <section class="col-9">
+      <article class="row">
+        <div id="map"></div>
+      </article>
+      <article class="row"></article>
+    </section>
+  </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsIiS_x7fASxyQSJGDjSXORFldMHCjFME&callback=initMap">
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script src="./resources/js/quake.js"></script>
+</body>
+</html>
