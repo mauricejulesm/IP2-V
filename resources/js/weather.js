@@ -4,7 +4,6 @@ let locationO = {};
 let forecast = {};
 let current = {};
 const baseUrl = 'http://api.apixu.com/v1/forecast.json?key=241ab0f9ad074597a52135112181012&q=';
-
 function init() {
   // sets default values for latitude and longitude if the user blocks the location prompt.
   if (latitude === '' && longitude === '') {
@@ -13,7 +12,6 @@ function init() {
   }
   makeApiCall();
 }
-
 /!* Makes the Api Call and returns the response as json *!/
 makeApiCall= () => {
   let url = `${baseUrl}${latitude},${longitude}`;
@@ -23,8 +21,6 @@ makeApiCall= () => {
     console.log(res);
   });
 };
-
-
 // updates the inputs fields on the screen
 updateInputValues = locationObj => {
   let location = locationObj.name;
@@ -34,21 +30,16 @@ updateInputValues = locationObj => {
   document.getElementById('latitude').value = lati;
   document.getElementById('longitude').value = lon;
 };
-
 // document.getElementById('submit-btn').addEventListener('click', send);
-
 getValues = () => {
   latitude = document.getElementById('latitude');
   longitude = document.getElementById('longitude');
 };
-
 send =(event) => {
   event.preventDefault();
   getValues();
 };
-
 createDataView = () => {};
-
 document.addEventListener('DOMContentLoaded', init);*/
 let lati = 0;
 let long = 0;

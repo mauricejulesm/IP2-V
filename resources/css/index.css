@@ -123,3 +123,22 @@ body {
   width: 60%;
   text-align: center;
 }
+
+.feeds-section{
+  padding-left: 41px;
+  text-decoration: none;
+  border: 1px solid #1e7e34;
+  border-radius: 5px;
+}
+/* weather */
+
+.weather_content_container {
+    margin: 3% auto 0 5%;
+}
+
+#search_box_weather {
+    background-color: #070919;
+    border: 1px solid #fff;
+    border-radius: 18px;
+    color: white;
+}
