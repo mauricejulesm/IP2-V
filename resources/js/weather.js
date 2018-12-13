@@ -1,53 +1,10 @@
-/*let latitude = '';
-let longitude = '';
-let locationO = {};
-let forecast = {};
-let current = {};
-const baseUrl = 'http://api.apixu.com/v1/forecast.json?key=241ab0f9ad074597a52135112181012&q=';
-function init() {
-  // sets default values for latitude and longitude if the user blocks the location prompt.
-  if (latitude === '' && longitude === '') {
-    latitude = -20.24;
-    longitude = 57.49;
-  }
-  makeApiCall();
-}
-/!* Makes the Api Call and returns the response as json *!/
-makeApiCall= () => {
-  let url = `${baseUrl}${latitude},${longitude}`;
-  fetch(url).then(data => {
-    return data.json();
-  }).then(res => {
-    console.log(res);
-  });
-};
-// updates the inputs fields on the screen
-updateInputValues = locationObj => {
-  let location = locationObj.name;
-  let lati = locationObj.lati;
-  let lon = locationObj.lon;
-  document.getElementById('location').value = location;
-  document.getElementById('latitude').value = lati;
-  document.getElementById('longitude').value = lon;
-};
-// document.getElementById('submit-btn').addEventListener('click', send);
-getValues = () => {
-  latitude = document.getElementById('latitude');
-  longitude = document.getElementById('longitude');
-};
-send =(event) => {
-  event.preventDefault();
-  getValues();
-};
-createDataView = () => {};
-document.addEventListener('DOMContentLoaded', init);*/
 let lati = 0;
 let long = 0;
 
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const FORECAST_DAYS = '&days=6';
 
-const BASE_OPEN_WEATHER_URL = 'http://api.apixu.com/v1/forecast.json?key=241ab0f9ad074597a52135112181012&q=';
+const BASE_OPEN_WEATHER_URL = 'https://api.apixu.com/v1/forecast.json?key=241ab0f9ad074597a52135112181012&q=';
 
 $(document).ready(() => {
   weatherByCoords();
