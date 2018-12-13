@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- Additional mapping page. For our group, we fetched data feed from Geography regions elevation points which can be available on this URL:
+     https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_geography_regions_elevation_points.geojson . 
+ Used point data. A map with clustered markers
+An infoWindow for each marker, that displays useful information that is part of the data feed.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+          integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+          crossorigin="anonymous"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <link rel="stylesheet" href="./resources/css/elevation.css">
+
+  <title>Geo-Data | IP2</title>
+
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <span class="navbar-toggle" id="js-navbar-toggle">
+      <i class="fas fa-bars"></i>
+    </span>
+    <a href="./index.html" class="logo">Geo-Data</a>
+    <ul class="main-nav" id="js-menu">
+      <li><a href="./index.html" class="nav-links">Home</a></li>
+      <li><a href="./about.html" class="nav-links">GeoJson</a></li>
+      <li><a href="./authors.html" class="nav-links">Authors</a></li>
+      <li><a href="./quake.html" class="nav-links">Earthquake</a></li>
+      <li><a href="./weather.html" class="nav-links">Weather</a></li>
+      <li><a href="elevation.html" class="nav-links active">Elevation</a></li>
+    </ul>
+  </nav>
+</header>
+<!-- <main class="main"> -->
+    <!-- <div class="container">
+            <div class="section group">
+                    <div class="col span_1_of_5">
+                            <button type="button" id="elevations">Click here</button>
+                    
+                    </div>
+                    <div class="col span_4_of_5">                        
+                            <div id="info"></div>
+                            <div id="map"></div>                                           
+                    </div>
+                    
+            </div>
+    </div> -->
+    <!-- body content -->
+    <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Click on the button below to view </p>
+                    <ol type="circle">
+                        <li>Clustered Markers for geography regions elevation points.</li>
+                        <li>For each elevation point, click on it to find useful information about that point such as its name, fact about it, and its featured class.</li>
+                    </ol>
+                    <button type="button" class="btn btn-lg" id="elevations">Click here</button>
+                </div>
+                <div class="col-sm-10">
+                    <div id="info"></div>
+                    <div id="map"></div>
+                </div>
+            </div>
+    </div>
+    <!-- end of body content  -->
+    <!-- use script to set the Google map functionality  -->
+    <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 2,
+                    center: new google.maps.LatLng(2.9, -194.5), 
+                    mapTypeId: 'terrain' 
+                });
+            }
+    
+            $(document).ready(function () {
+    
+                $('#elevations').click(function () {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 2,
+                        center: new google.maps.LatLng(2.9, -194.5), 
+                        mapTypeId: 'terrain' 
+                    });
+                    $.ajax({
+                        // The URL of the geography regions elevation points
+                        url: "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_geography_regions_elevation_points.geojson",
+    
+                        // Called if there is a problem loading the data
+                        error: function () {
+                            $('#info').html('<p>An error has occurred</p>');
+                        },
+    
+                        // The data has succesfully loaded
+                        success: function (data) {
+                    
+                                i=0;
+                                var markers = [];
+                                
+                                $.each(data.features, function (key, val) {
+                                // Lat and Lng data for use in the markers
+                                
+                                var coords = val.geometry.coordinates;
+                                var latLng = new google.maps.LatLng(coords[1], coords[0]);
+                                // Create a new marker on the map
+                                var marker = new google.maps.Marker({
+                                    position: latLng,
+                                    map: map,
+                                    label: val.properties.elevation.toString() 
+                                });
+                                    
+                                   var infowindow = new google.maps.InfoWindow({
+                                    content: "<h3>" + val.properties.name + "</h3><p><h4>" + val.properties.region + ","+val.properties.comment +","+val.properties.featureclass +".</h4>"
+                                });
+                                marker.addListener('click', function (data) {
+                                    infowindow.open(map, marker); // Open the Google maps marker infoWindow
+                                });
+                     
+                                markers[i++] = marker; 
+                            });
+                                
+                                var markerCluster = new MarkerClusterer(map, markers,
+                                { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    
+                        }
+                    });
+                });
+            });
+        </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                    crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                    crossorigin="anonymous"></script>
+                    
+            <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBf-TyZaQzG11vNXroKXTJzFqU1xEulTwY&callback=initMap">
+            </script>
+</body>
+</html>
