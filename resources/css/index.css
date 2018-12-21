@@ -59,6 +59,11 @@ body {
   display: block;
 }
 
+.activev {
+  color: #070919;
+  text-decoration-line: underline;
+  }
+
 @media screen and (min-width: 800px) {
   .navbar {
     display: flex;
